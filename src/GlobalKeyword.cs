@@ -1,6 +1,6 @@
 using Intellenum;
 
-namespace Soenneker.Quark;
+namespace Soenneker.Quark.Enums;
 
 /// <summary>
 /// Represents the CSS-wide keywords that can be applied to any CSS property.
