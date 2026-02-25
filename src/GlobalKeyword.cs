@@ -1,4 +1,4 @@
-using Intellenum;
+using Soenneker.Gen.EnumValues;
 
 namespace Soenneker.Quark.Enums;
 
@@ -7,7 +7,7 @@ namespace Soenneker.Quark.Enums;
 /// These keywords are defined in the CSS Cascading and Inheritance specification
 /// and provide standardized ways to control inheritance and property behavior.
 /// </summary>
-[Intellenum<string>]
+[EnumValue<string>]
 public partial class GlobalKeyword
 {
     /// <summary>
