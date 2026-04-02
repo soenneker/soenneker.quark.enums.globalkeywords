@@ -1,6 +1,6 @@
 using Soenneker.Gen.EnumValues;
 
-namespace Soenneker.Quark.Enums;
+namespace Soenneker.Quark;
 
 /// <summary>
 /// Represents the CSS-wide keywords that can be applied to any CSS property.
