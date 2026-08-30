@@ -1,11 +1,12 @@
 [![](https://img.shields.io/nuget/v/soenneker.quark.enums.globalkeywords.svg?style=for-the-badge)](https://www.nuget.org/packages/soenneker.quark.enums.globalkeywords/)
 [![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.quark.enums.globalkeywords/publish-package.yml?style=for-the-badge)](https://github.com/soenneker/soenneker.quark.enums.globalkeywords/actions/workflows/publish-package.yml)
+[![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.quark.enums.globalkeywords/build-and-test.yml?label=Build&style=for-the-badge)](https://github.com/soenneker/soenneker.quark.enums.globalkeywords/actions/workflows/build-and-test.yml)
 [![](https://img.shields.io/nuget/dt/soenneker.quark.enums.globalkeywords.svg?style=for-the-badge)](https://www.nuget.org/packages/soenneker.quark.enums.globalkeywords/)
 [![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.quark.enums.globalkeywords/codeql.yml?label=CodeQL&style=for-the-badge)](https://github.com/soenneker/soenneker.quark.enums.globalkeywords/actions/workflows/codeql.yml)
 
 # Soenneker.Quark.Enums.GlobalKeywords
 
-Represents the CSS-wide keywords that can be applied to any CSS property. These keywords are defined in the CSS Cascading and Inheritance specification and provide standardized ways to control inheritance and property behavior.
+Strongly typed CSS-wide keywords that can be assigned to any CSS property.
 
 ## Install
 
@@ -13,16 +14,21 @@ Represents the CSS-wide keywords that can be applied to any CSS property. These 
 dotnet add package Soenneker.Quark.Enums.GlobalKeywords
 ```
 
-## What you get
+## Usage
 
-- `GlobalKeyword` — Represents the CSS-wide keywords that can be applied to any CSS property. These keywords are defined in the CSS Cascading and Inheritance specification and provide standardized ways to control inheritance and property behavior.
+```csharp
+GlobalKeyword keyword = GlobalKeyword.Inherit;
+string cssValue = keyword.Value; // "inherit"
+```
 
-## API at a glance
+These values are also included by Quark property-specific keyword types, so a component API can accept values such as `FontStyleKeyword.Inherit` without introducing a separate string path.
 
-| API | What it does | Result / important behavior |
+## Values
+
+| Member | CSS value | Effect |
 | --- | --- | --- |
-| `GlobalKeyword.Inherit` | Inherits the value of the property from its parent element. | Inherits the value of the property from its parent element. |
-| `GlobalKeyword.Initial` | Applies the property's initial (default) value as defined by the CSS specification. | Applies the property's initial (default) value as defined by the CSS specification. |
-| `GlobalKeyword.Unset` | Removes any explicit value and causes the property to act as if it were unset: it inherits if the property is naturally inherited, or otherwise uses its initial value. | Removes any explicit value and causes the property to act as if it were unset: it inherits if the property is naturally inherited, or otherwise uses its initial value. |
-| `GlobalKeyword.Revert` | Rolls the property back to the value it would have had if no styles from the current style sheet or those with higher precedence had applied. | Rolls the property back to the value it would have had if no styles from the current style sheet or those with higher precedence had applied. |
-| `GlobalKeyword.RevertLayer` | Similar to `revert`, but only reverts styles from the current cascade layer. Lower-priority layers are restored as if the higher layer’s declaration were absent. | Similar to `revert`, but only reverts styles from the current cascade layer. Lower-priority layers are restored as if the higher layer’s declaration were absent. |
+| `Inherit` | `inherit` | Uses the computed value from the parent element. |
+| `Initial` | `initial` | Uses the property's specification-defined initial value. |
+| `Unset` | `unset` | Behaves as `inherit` for inherited properties and `initial` otherwise. |
+| `Revert` | `revert` | Rolls the property back to the value established by an earlier cascade origin. |
+| `RevertLayer` | `revert-layer` | Rolls the property back within the current cascade origin to an earlier layer. |

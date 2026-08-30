@@ -27,14 +27,12 @@ public partial class GlobalKeyword
     public static readonly GlobalKeyword Unset = new("unset");
 
     /// <summary>
-    /// Rolls the property back to the value it would have had if no styles
-    /// from the current style sheet or those with higher precedence had applied.
+    /// Rolls the property back to the value established by an earlier cascade origin.
     /// </summary>
     public static readonly GlobalKeyword Revert = new("revert");
 
     /// <summary>
-    /// Similar to <c>revert</c>, but only reverts styles from the current cascade layer.
-    /// Lower-priority layers are restored as if the higher layer’s declaration were absent.
+    /// Rolls the property back within the current cascade origin to an earlier cascade layer.
     /// </summary>
     public static readonly GlobalKeyword RevertLayer = new("revert-layer");
 }
